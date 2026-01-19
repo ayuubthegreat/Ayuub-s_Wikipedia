@@ -1,10 +1,19 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
-
+h1 {
+  margin-bottom: 0px;
+}
+a {
+  width: fit-content;
+  text-decoration: none;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -28,7 +37,7 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
+  a:nth-of-type(1) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
