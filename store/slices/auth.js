@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { BASE_URL } from '../store/BASE_URL.js';
+import { BASE_URL } from '../../BASE_URL.js';
 import { WEBSITE_ID } from '../../BASE_URL.js';
 import { apiCall } from '../utils/apiCall.js';
 
@@ -25,12 +25,12 @@ export const login = createAsyncThunk(
         return result.success ? result.data : rejectWithValue(result.error);
     }
 )
-export const register = createAsyncThunk(
-    'auth/register',
+export const registerThunk = createAsyncThunk(
+    'auth/registerThunk',
     async ({ name, email, password }, { rejectWithValue }) => {
         const result = await apiCall(
             'post',
-            `${BASE_URL_AUTH}/login`,
+            `${BASE_URL_AUTH}/register`,
             {websiteID: WEBSITE_ID, name, email, password}
         )
         return result.success ? result.data : rejectWithValue(result.error);
@@ -40,7 +40,7 @@ export const checkForUserInfo = createAsyncThunk( // For use when user info is n
     'auth/checkForUserInfo',
     async (__, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`${BASE_URL_AUTH}/auth/me`, {
+            const response = await axios.get(`${BASE_URL_AUTH}/me`, {
                 headers: {
                     'Content-Type': 'application/json',
                     "Authorization": `Bearer ${localStorage.getItem('token') || ''}`,
@@ -68,12 +68,15 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        logout: (state) => {
+        logout_reducer: (state) => {
             state.user = null;
             state.token = null;
             state.error = null;
             localStorage.removeItem('token');
             console.log("Logout successful.");
+        },
+        setUser: (state, action) => {
+            state.user = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -93,18 +96,18 @@ const authSlice = createSlice({
             state.error = action.payload?.message || 'Login failed. Please try again.';
         });
         builder
-        .addCase(register.pending, (state) => {
+        .addCase(registerThunk.pending, (state) => {
             state.loading = true;
             state.error = null;
         })
-        .addCase(register.fulfilled, (state, action) => {
+        .addCase(registerThunk.fulfilled, (state, action) => {
             state.loading = false;
             state.user = action.payload.data.user;
             state.token = action.payload.data.token;
             localStorage.removeItem('token'); // Clear any existing token
             localStorage.setItem('token', action.payload.data.token);
         })
-        .addCase(register.rejected, (state, action) => {
+        .addCase(registerThunk.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload?.message || 'Registration failed. Please try again.';
         })
@@ -127,5 +130,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { logout } = authSlice.actions;
+export const { logout_reducer, setUser } = authSlice.actions;
 export default authSlice.reducer;
