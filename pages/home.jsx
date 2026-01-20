@@ -14,17 +14,10 @@ export const Home = () => {
     <div className="parent_container">
         <div className="child_container">
             <h1>Welcome to {WEBSITE_NAME}!</h1>
-            <p>The website dedicated to {STUDIO_NAME}.</p>
+            <p>The website dedicated to {STUDIO_NAME}, where our projects come to life.</p>
             <img className="section_image" src="https://1drv.ms/i/c/09e336c8c6cc3c06/IQTsCnLUO2aIQbYbitgvl6J1AbOoenhZ9RU566h2WtEcB_M?width=1920&height=1440" width="1080" height="720" />
             <div className="buttons">
                 <Link to={"/about"}>About Us</Link>
-                <Link to={"/projects"}>Our Projects</Link>
-            </div>
-        </div>
-        <div className="child_container">
-            <h1>Where all of our projects come to life.</h1>
-            <p>Did you know that every project we undertake is crafted with passion and precision?</p>
-            <div className="buttons">
                 <Link to={"/projects"}>Our Projects</Link>
             </div>
         </div>

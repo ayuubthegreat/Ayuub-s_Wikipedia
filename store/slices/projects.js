@@ -5,7 +5,7 @@ import { apiCall, failedCase, loadingCase } from '../utils/apiCall.js';
 import { objectiveSuccessCase, projectsSuccessCase } from '../utils/projectsCall.js';
 
 
-const BASE_URL_PROJECTS = BASE_URL + "/wiki"
+const BASE_URL_PROJECTS = BASE_URL + "/wiki/projects"
 
 export const initialState = {
     user: null,

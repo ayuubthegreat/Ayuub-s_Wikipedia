@@ -28,6 +28,10 @@ a {
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
+  
+}
+.logo_navbar {
+  animation: zoom-in-out 3s ease-in-out infinite;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
@@ -94,11 +98,16 @@ textarea {
     cursor: pointer;
     user-select: none;
 }
+@keyframes zoom-in-out {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
 
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
   to {
     transform: rotate(360deg);
   }

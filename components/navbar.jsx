@@ -13,7 +13,7 @@ export const Logo = () => {
         <>
         <div className="logo_navbar" onClick={() => {n("/")}}>
             <h1>{WEBSITE_NAME}</h1>
-            <p>Encyclopedia for everything {STUDIO_NAME}</p>  
+            <p>Website for everything {STUDIO_NAME}</p>  
         </div>
         </>
     )
@@ -50,6 +50,7 @@ export const Navbar = () => {
                 <Link to="/gitspedia">Gits-pedia</Link>
                 <Link to="/projects">Our Projects</Link>
                 <Link to="/portal">Sign In</Link>
+                <Link to="/register" style={{color: "white"}} className="shiny_button">Register</Link>
                 </>
             )
         }

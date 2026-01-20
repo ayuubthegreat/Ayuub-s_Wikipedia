@@ -35,8 +35,8 @@ a:hover {
     max-height: fit-content;
     text-align: left;
     margin: 1.5rem auto;
-    max-width: 1800px;
-    width: 90%;
+    max-width: 1200px;
+    width: 70%;
     z-index: 2;
     background-color: rgba(255, 235, 205, 0.95);
     border-radius: 16px;
@@ -47,7 +47,7 @@ a:hover {
 
 .child_container:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 1);
 }
 .shiny_button {
     font-size: 1.5rem;
@@ -92,4 +92,18 @@ a:hover {
     background-color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .child_container {
+        padding: 2rem;
+        margin: 1rem;
+    }
+    h1 {
+        font-size: 32px;
+    }
+    .shiny_button {
+        font-size: 1.25rem;
+        padding: 0.75rem 2rem;
+    }
 }
