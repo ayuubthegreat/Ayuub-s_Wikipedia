@@ -30,9 +30,7 @@ a {
   transition: filter 300ms;
   
 }
-.logo_navbar {
-  animation: zoom-in-out 3s ease-in-out infinite;
-}
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }

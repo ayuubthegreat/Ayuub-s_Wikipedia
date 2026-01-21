@@ -9,7 +9,6 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     padding: 0.5rem 1rem;
-    position: sticky;
     top: 0;
     z-index: 500;
 }
@@ -72,3 +71,19 @@
     background-color: rgba(102, 126, 234, 0.1);
     transform: scale(1.02);
 }
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+        font-size: small;
+    }
+    .logo_navbar {
+        margin: 0;
+        font-size: small;
+    }
+    nav .buttons {
+        display: none;
+    }
+}           
