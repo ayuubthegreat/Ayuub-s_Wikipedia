@@ -21,6 +21,7 @@ export const Logo = () => {
 export const Navbar = () => {
     
     const {user, token} = useSelector(state => state.auth);
+    const [isOpen, setIsOpen] = useState(false);
     const dispatch = useDispatch();
     const n = useNavigate();
     const buttons = () => {
@@ -61,8 +62,20 @@ export const Navbar = () => {
         <div>
             <Logo></Logo>
         </div>
-        <div className="buttons">
+        <div className="buttons nav_buttons">
             {buttons()}
+        </div>
+        <div className="dropdown">
+            <button id="dropbtn" className={`dropbtn transparent_button ${isOpen ? "reveal" : "unreveal"}`} onClick={() => {
+                const dropdown = document.getElementById("dropdown_content");
+                dropdown.classList.toggle("hidden");
+                setIsOpen(!isOpen);
+            }}>☰</button>
+            <div id="dropdown_content" className="hidden">
+                <div className="buttons dropdown">
+                  {buttons()}   
+                </div>  
+            </div>
         </div>
         </nav>
         </>
