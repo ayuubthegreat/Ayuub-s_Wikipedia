@@ -18,19 +18,23 @@ export const Logo = () => {
         </>
     )
 }
+
 export const Navbar = () => {
     
     const {user, token} = useSelector(state => state.auth);
     const [isOpen, setIsOpen] = useState(false);
+    const switch_on_state = (isOpen) => {
+    setIsOpen(isOpen);
+    }
     const dispatch = useDispatch();
     const n = useNavigate();
     const buttons = () => {
         if (token && user) {
             return (<>
             <p className="user_greeting">Hello, <i className="user-name">{user.name}</i> !</p>
-            <Link to="/about">About Us</Link>
-            <Link to="/gitspedia">Gits-pedia</Link>
-            <Link to="/projects">Our Projects</Link>
+            <Link to="/about" onClick={() => {switch_on_state(false)}}>About Us</Link>
+            <Link to="/gitspedia" onClick={() => {switch_on_state(false)}}>Gits-pedia</Link>
+            <Link to="/projects" onClick={() => {switch_on_state(false)}}>Our Projects</Link>
             <a className="transparent_button" onClick={() => {
                 const logout_button = async() => {
                     try {
@@ -67,11 +71,9 @@ export const Navbar = () => {
         </div>
         <div className="dropdown">
             <button id="dropbtn" className={`dropbtn transparent_button ${isOpen ? "reveal" : "unreveal"}`} onClick={() => {
-                const dropdown = document.getElementById("dropdown_content");
-                dropdown.classList.toggle("hidden");
-                setIsOpen(!isOpen);
+                switch_on_state(!isOpen);
             }}>☰</button>
-            <div id="dropdown_content" className="hidden">
+            <div id="dropdown_content" className={`dropdown_content ${isOpen ? "show" : "hidden"}`}>
                 <div className="buttons dropdown">
                   {buttons()}   
                 </div>  

@@ -77,10 +77,10 @@
     display: none;
 }
 .reveal {
-    animation: dropdown-rotate 0.3s ease forwards;
+    transform: rotate(90deg);
 }
 .unreveal {
-    animation: dropdown-unrotate 0.3s ease forwards;
+    transform: rotate(0deg);
 }
 .hidden {
     display: none;
@@ -92,7 +92,7 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 @keyframes dropdown-rotate {
   from {
